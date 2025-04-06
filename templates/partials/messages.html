@@ -1,0 +1,36 @@
+<!DOCTYdivE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewdivort" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            font-size:1.5em;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="alert alert-success w-50">
+                    <p>{{ message }}</p>
+                </div>
+            {% elif message.tags == 'error' %}
+                <div class="alert alert-warning  w-50">
+                    <p>{{ message }}</p>
+                </div>
+            {% elif message.tags == 'warning' %}
+                <div class="alert alert-danger   w-50">
+                    <p>{{ message }}</p>
+                </div>
+            {% elif message.tags == 'info' %}
+                <div class="alert alert-primary  w-50">
+                    <p>{{ message }}</p>
+                </div>
+            {% endif %}  
+        {% endfor %}
+    {% endif %} 
+</body>
+</html>

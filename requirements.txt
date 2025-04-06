@@ -1,0 +1,6 @@
+django
+python-dotenv
+django-allauth
+django-allauth[socialaccount]
+django-crispy-forms
+crispy-bootstrap4

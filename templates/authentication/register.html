@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block title %} Amazon | Register {% endblock %}
+
+{% block body %}
+<style>
+    .card{
+        background-color: #F0F8FF;
+    }
+</style>
+<div class="container">
+    <div class="card my-2 mx-auto w-75 p-2 border-0">
+        <div class="card-header text-center">
+            <img src="{% static 'images/amazonlogo.svg' %}" alt="amazon" height="100%"  width="150px" >
+            <p class="card-title h3">Register Account</p>
+            <div class="d-flex gap-2">
+                <a href="{% provider_login_url 'google' %}" class="btn btn-outline-primary flex-fill">Register With <i class="fa-brands fa-google"></i> Google</a>
+                <a href="#" class="btn btn-primary  flex-fill">Register With <i class="fa-brands fa-square-facebook"></i> Facebook</a> 
+            </div>
+        </div>
+        <div class="card-body">
+            <form action="" method="post" id="registerform" onsubmit="validateForm(event)">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.first_name|as_crispy_field}}
+                        <div class="error" id="fnameError"></div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.last_name|as_crispy_field}}
+                        <div class="error" id="lnameError"></div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.email|as_crispy_field }}
+                        <div class="error" id="emailError"></div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.phone|as_crispy_field }}
+                        <div class="error" id="phoneError"></div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.gender|as_crispy_field }}
+                        <div class="error"></div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.date_of_birth|as_crispy_field }}
+                        <div class="error"></div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.username|as_crispy_field }}
+                        <div class="error" id="unameError"></div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.password1|as_crispy_field }}
+                        <div class="error" id="password1Error"></div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.password2|as_crispy_field }}
+                        <div class="error" id="password2Error"></div>
+                    </div>
+                    <div class="col-md-12 text-center my-2">
+                        <input type="submit" value="Register" class="btn btn-primary w-50">
+                    </div>   
+                </div>
+            </form> 
+        </div>
+    </div>     
+</div>
+
+{% endblock %}
