@@ -1,0 +1,26 @@
+# Python & Django
+__pycache__/
+*.py[cod]
+*$py.class
+*/migrations/*.py
+!*/migrations/__init__.py
+*.sqlite3
+db.sqlite3
+
+# Logs & Cache
+*.log
+*.cache
+
+# Dependencies
+venv/
+.venv/
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS-Specific
+.DS_Store
+Thumbs.db
