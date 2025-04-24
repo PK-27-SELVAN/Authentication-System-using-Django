@@ -1,4 +1,4 @@
-# Python & Django
+
 __pycache__/
 *.py[cod]
 *$py.class
@@ -7,20 +7,19 @@ __pycache__/
 *.sqlite3
 db.sqlite3
 
-# Logs & Cache
 *.log
 *.cache
 
-# Dependencies
+
 venv/
 .venv/
 node_modules/
 
-# IDE
+
 .idea/
 .vscode/
 *.swp
 
-# OS-Specific
+
 .DS_Store
 Thumbs.db
