@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block title %} Amazon | Register {% endblock %}
+
+{% block body %}
+<style>
+    .card{
+        background-color: #F0F8FF;
+    }
+</style>
+<div class="container">
+    <div class="card my-2 mx-auto w-75 p-2 border-0">
+        <div class="card-header text-center">
+            <img src="{% static 'images/amazonlogo.svg' %}" alt="amazon" height="100%"  width="150px" >
+            <p class="card-title h3">Register Account</p>
+            <div class="d-flex gap-2">
+                <a href="{% provider_login_url 'google' %}" class="btn btn-outline-primary flex-fill">Register With <i class="fa-brands fa-google"></i> Google</a>
+                <a href="{% provider_login_url 'amazon' %}" class="btn btn-primary  flex-fill">Register With <i class="fa-brands fa-amazon"></i> Amazon</a> 
+            </div>
+        </div>
+        <div class="card-body">
+            <form action="" method="post" id="registerform" onsubmit="formvalidation()">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.first_name|as_crispy_field}}
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.last_name|as_crispy_field}}
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.email|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.phone|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.gender|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.date_of_birth|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.username|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.password1|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 my-1">
+                        {{ Registerform.password2|as_crispy_field }}
+                    </div>
+                    <div class="col-md-12 text-center my-2">
+                        <input type="submit" value="Register" class="btn btn-primary w-50">
+                    </div>   
+                </div>
+            </form> 
+        </div>
+    </div>     
+</div>
+<script>
+    const fname = document.getElementById("id_first_name");
+    const lname = document.getElementById("id_last_name");
+    const uname = document.getElementById("id_username");
+    const ps1 = document.getElementById("id_password1");
+    const ps2 = document.getElementById("id_password2");
+    const phno = document.getElementById("id_phone");
+    const email = document.getElementById("id_email");
+
+    let msgbox = document.createElement('span');
+    msgbox.style.fontSize = "11px";
+
+    // msgbox.setAttribute("class","text-center")
+    function validatefirstname(){
+        if (fname.value.length<5){
+            fname.insertAdjacentElement("afterend",msgbox)
+            msgbox.style.color = 'red'
+            msgbox.innerText = "*required minimum 5 characters"
+        }
+        else{
+            fname.insertAdjacentElement("afterend",msgbox)
+            msgbox.style.color = 'green'
+            msgbox.innerText = "valid firstname"
+        }
+    }
+
+    function validatelastname(){
+        if (lname.value.length<5){
+            lname.insertAdjacentElement("afterend",msgbox)
+            msgbox.style.color = 'red'
+            msgbox.innerText = "*required minimum 5 characters"
+        }
+        else{
+            lname.insertAdjacentElement("afterend",msgbox)
+            msgbox.style.color = 'green'
+            msgbox.innerText = "valid lasttname"
+        }
+    }
+
+
+    function validateusername(){
+        if (uname.value.length<8){
+            uname.insertAdjacentElement("afterend",msgbox)
+            msgbox.style.color = 'red'
+            msgbox.innerText = "*required minimum 8 characters"
+        }
+        else{
+            uname.insertAdjacentElement("afterend",msgbox)
+            msgbox.style.color = 'green'
+            msgbox.innerText = "valid username"
+        }
+    }
+
+    function ps2check(){
+        if (ps1.value === ps2.value){
+            ps2.insertAdjacentElement("afterend",msgbox)
+            msgbox.innerText = 'password matches'
+            msgbox.style.color = 'green'
+        }
+        else {
+            ps2.insertAdjacentElement("afterend",msgbox)
+            msgbox.innerText = 'password not matches'
+            msgbox.style.color = 'red'
+        }
+    }
+
+
+    fname.addEventListener('blur',validatefirstname)
+    lname.addEventListener('blur',validatelastname)
+    uname.addEventListener('blur',validateusername)
+    ps2.addEventListener('blur',ps2check)
+
+    function formvalidation(){
+        if (fname.value !== '' && lname.value !== '' && uname.value !== '' && ps1.value !== '' && ps2.value !== '' && phno.value !== '' && email.value !== ''){
+            alert("form submitted succesfully")
+        }
+        else {
+            alert("form error:check all ")
+        }
+    }
+
+</script>
+
+{% endblock %}

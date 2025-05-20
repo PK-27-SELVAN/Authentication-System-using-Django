@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyo
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+# Environment
+.env
+.env.*
+
+# VSCode
+.vscode/
+
+# Virtual Environment
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Git
+*.orig
+
+# Migrations (optional, depending on how you collaborate)
+**/migrations/*.py
+!**/migrations/__init__.py

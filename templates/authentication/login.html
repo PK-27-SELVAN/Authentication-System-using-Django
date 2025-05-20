@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block title %} Amazon | Register {% endblock %}
+
+{% block body %}
+<style>
+    label{
+        font-size:1.3em;
+        margin:2px 0;
+        font-weight:600;
+    }
+    .card{
+        background-color:#F5F5F5;
+    }
+    
+
+</style>
+<div class="container">
+    <div class="card my-5 mx-auto w-50 p-4 border-0 shadow-sm">
+        <div class="card-header text-center">
+            <img src="{% static 'images/amazonlogo.svg' %}" alt="amazon" height="100%"  width="150px" >
+            <h3 class="my-3">Sign In With</h3>
+            <div class="d-flex gap-2">
+                <a href="{% provider_login_url 'google' %}" class="btn btn-outline-primary google flex-fill"><i class="fa-brands fa-google"></i> Google</a>
+                <a href="{% provider_login_url 'amazon' %}" class="btn btn-primary google flex-fill"><i class="fa-brands fa-amazon"></i> Amazon</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{loginform.username|as_crispy_field}}
+                {{loginform.password|as_crispy_field}}
+                <div class="text-end">
+                    <a href="{% url 'identifyuser' %}" class="text-decoration-none">Forgot Password?</a>
+                </div>
+                <div class="col-md-12 my-3 text-center">
+                    <input type="submit" value="Login" class="btn btn-success w-75 f">
+                </div> 
+            </form>     
+        </div>
+        <div class="card-footer">
+            <div class="text-center">
+                <span>Don't have an account? </span><a href="{% url 'register' %}" class="text-decoration-none">Create New Account</a>
+            </div>
+        </div>
+    </div>     
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav-item{
+            font-size: 1.2em;
+        }
+        .nav-link{
+            color:#0f1056;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color:#81b1ce;">
+        <div class="container-fluid">
+            <div style="width:15%" class="text-center p-2">
+                <a href="#" class="navbar-brand"><img src="{% static 'images/amazonlogo.svg' %}" alt="amazon" height="70%"  width="60%" ></a>
+            </div>
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">  
+            </div> -->
+            <ul class="navbar-nav nav-pills justify-content-around" style="width:75%">
+                <li class="nav-item">
+                    <a href="{% url 'home' %}" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+                </li>
+                <li class="nav-item" style="width:50%">
+                    <form action="#"method="post">
+                        <div class="input-group">
+                            {% csrf_token %}
+                            <input type="text" class="form-control border border-2 rounded-2" placeholder="Search for mobiles,headphones,clothes...">
+                            <button type="submit" class="btn btn-primary input-group-text"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-tags"></i> Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fa-solid fa-user"></i> Account</a>
+                </li>
+            </ul>
+            
+            <div style="width:10%" >
+                <a href="#" class="btn btn-primary btn-sm w-100">Login/Register</a>
+            </div>
+        </div>
+    </nav>
+    
+</body>
+</html>
